@@ -1,0 +1,9 @@
+<ng-container>
+  <div class="card-header" *ngIf="fwHeader">
+    {{fwHeader}}
+  </div>
+  <ng-content></ng-content>
+  <div class="card-footer" *ngIf="fwFooter">
+    <small class="text-muted">{{fwFooter}}</small>
+  </div>
+</ng-container>

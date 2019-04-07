@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  prefixComponents: 'fw',
+  apiUrl: '//127.0.0.1:8000/api/v1/',
+  imgNotFound: 'assets/no-image-1x1.jpg',
 };
 
 /*

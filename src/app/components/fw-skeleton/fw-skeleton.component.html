@@ -1,0 +1,10 @@
+<ng-container *ngIf="fwLoading">
+  <div class="skeleton">
+    <ul class="list-unstyled" [ngClass]="{'mb-5': (fwSection > 1)}" *ngFor="let section of fwSectionArr">
+      <li class="item animate" *ngFor="let row of fwRowsArr"></li>
+    </ul>
+  </div>
+</ng-container>
+<ng-container *ngIf="!fwLoading">
+  <ng-content></ng-content>
+</ng-container>

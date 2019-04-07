@@ -1,0 +1,13 @@
+<ul class="pagination">
+  <li class="page-item"><a class="page-link" href="#" (click)="clickPage($event, 1)"><i class="fa fa-angle-double-left"></i></a></li>
+  <li class="page-item"><a class="page-link" href="#" (click)="clickPage($event, fwPrevPage)"><i class="fa fa-angle-left"></i></a></li>
+  <li class="page-item" *ngFor="let page of pages"
+    [class.active]="fwCurrentPage==page.index">
+    <a class="page-link" href="#"
+       [attr.title]="page.index"
+       (click)="clickPage($event, page.index)"
+    >{{page.index}}</a>
+  </li>
+  <li class="page-item"><a class="page-link" href="#" (click)="clickPage($event, fwNextPage)"><i class="fa fa-angle-right"></i></a></li>
+  <li class="page-item"><a class="page-link" href="#" (click)="clickPage($event, lastIndex)"><i class="fa fa-angle-double-right"></i></a></li>
+</ul>

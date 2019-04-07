@@ -1,0 +1,65 @@
+<div class="container mt-4 mb-4">
+
+  <button fw-button (click)="onClickBack()">
+    <i class="fa fa-angle-left fa-lg mr-1"></i>
+    Назад
+  </button>
+
+  <section class="my-4">
+    <fw-skeleton [fwLoading]="loadingPost" [fwRows]="6">
+      <fw-card @fadeAnimation fwFooter="{{post?.created_at}}"
+               fwHeader="{{post?.title}}">
+        <fw-card-body>
+          <fw-card-title>
+            <h1>{{post?.title}}</h1>
+          </fw-card-title>
+          <fw-card-text>
+            {{post?.text}}
+          </fw-card-text>
+        </fw-card-body>
+      </fw-card>
+    </fw-skeleton>
+  </section>
+
+  <section class="comments">
+    <h3>Комментарии</h3>
+    <span class="add-comment text-primary" (click)="openModalComment()">
+      <i class="fa fa-commenting-o fa-lg mr-1"></i>
+      Добавить комментарий
+    </span>
+
+    <ul>
+      <ng-template #commentsTmpl let-comments>
+        <li *ngFor="let item of comments">
+          <fw-comment [fwComment]="item" (fwReplyChange)="replyChange(item)"></fw-comment>
+          <ul *ngIf="(item.child) && (item.child.length > 0)">
+            <ng-container *ngTemplateOutlet="commentsTmpl; context:{ $implicit: item.child }"></ng-container>
+          </ul>
+        </li>
+      </ng-template>
+      <ng-container *ngTemplateOutlet="commentsTmpl; context:{ $implicit: comments }"></ng-container>
+    </ul>
+
+  </section>
+
+</div>
+
+<fw-modal [(fwVisible)]="visibleCommentModal" [fwTitle]="commentModalTitle ? 'Ответ: '+commentModalTitle : 'Добавить комментарий'">
+  <fw-modal-body>
+
+    <form [formGroup]="commentModalForm">
+      <fw-form-group>
+        <label>Комментарий</label>
+        <textarea fw-input formControlName="text" [fwControl]="commentModalForm.get('text')"></textarea>
+        <fw-errors [fwControl]="commentModalForm.get('text')">
+          <fw-error fwError="required">Обязательное поле</fw-error>
+        </fw-errors>
+      </fw-form-group>
+    </form>
+
+  </fw-modal-body>
+  <fw-modal-footer>
+    <button fw-button type="button" fwType="outline-danger" (click)="hideCommentModal()">Закрыть</button>
+    <button fw-button type="button" fwType="info" (click)="addComment()" [fwLoading]="commentModalLoadingBtn">Сохранить</button>
+  </fw-modal-footer>
+</fw-modal>

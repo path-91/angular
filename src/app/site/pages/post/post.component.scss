@@ -1,0 +1,17 @@
+.comments{
+  position: relative;
+  ul{
+    list-style: none;
+    padding-left: 1.5rem;
+  }
+}
+
+.add-comment{
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  margin-top: -35px;
+  &:hover{
+    text-decoration: underline;
+  }
+}

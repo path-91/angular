@@ -1,0 +1,11 @@
+<div class="media my-4">
+  <img src="assets/img_avatar.png" class="mr-3" width="80"/>
+  <div class="media-body">
+    <div class="mb-2">
+      <span class="h5 mr-2">user name</span>
+      <small class="text-muted mr-3">{{fwComment.created_at}}</small>
+      <a href="#" (click)="onClickReply($event)"><i class="fa fa-reply"></i> Ответить</a>
+    </div>
+    {{fwComment.text}}
+  </div>
+</div>

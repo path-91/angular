@@ -1,0 +1,33 @@
+.skeleton{
+  .item{
+    height: 1rem;
+    background: #f2f2f2;
+    &:not(:nth-child(1)):not(:nth-last-child(1)){
+      width: 100%;
+    }
+    &:not(:nth-last-child(1)){
+      margin-bottom: 1rem;
+    }
+    &:nth-child(1) {
+      width: 40%;
+    }
+    &:nth-last-child(1) {
+      width: 60%;
+    }
+    &.animate{
+      background: linear-gradient(90deg,#f2f2f2 25%,#e6e6e6 37%,#f2f2f2 63%);
+      animation: 1.4s infinite skeleton-loading;
+      background-size: 400% 100%;
+    }
+
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
