@@ -48,13 +48,13 @@ export class FwPaginationComponent implements OnInit {
   }
 
   /*PrevPage*/
-  get fwPrevPage(): number | void {
+  get fwPrevPage() {
     if (this.fwCurrentPage > 1) {
       return this.fwCurrentPage - 1;
     }
   }
   /*NextPage*/
-  get fwNextPage(): number | void {
+  get fwNextPage() {
     if (this.fwCurrentPage < this.lastIndex) {
       return this.fwCurrentPage + 1;
     }
